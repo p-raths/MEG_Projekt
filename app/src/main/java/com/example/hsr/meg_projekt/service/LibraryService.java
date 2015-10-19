@@ -13,9 +13,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import ch.hsr.mge.gadgeothek.domain.Gadget;
-import ch.hsr.mge.gadgeothek.domain.Loan;
-import ch.hsr.mge.gadgeothek.domain.Reservation;
+import com.example.hsr.meg_projekt.domain.Gadget;
+import com.example.hsr.meg_projekt.domain.Loan;
+import com.example.hsr.meg_projekt.domain.Reservation;
 
 public class LibraryService {
 
