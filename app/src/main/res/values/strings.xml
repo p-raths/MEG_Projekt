@@ -20,4 +20,5 @@
         completions."
     </string>
     <string name="title_activity_overview">OverviewActivity</string>
+    <string name="title_activity_settings">Settings</string>
 </resources>
