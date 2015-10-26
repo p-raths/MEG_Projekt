@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity{
         editor.putString("server", server);
         editor.commit();
 
-        LibraryService service = new com.example.hsr.meg_projekt.service.LibraryService();
+        LibraryService service = new LibraryService();
         service.setServerAddress(server);
 
         service.login(username, password, new Callback<Boolean>() {
