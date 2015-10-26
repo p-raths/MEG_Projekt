@@ -23,9 +23,6 @@
 
         <include layout="@layout/content_main" />
 
-
-
-
     </android.support.design.widget.CoordinatorLayout>
 
 </android.support.v4.widget.DrawerLayout>

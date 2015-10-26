@@ -1,11 +1,7 @@
 package com.example.hsr.meg_projekt;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -29,12 +25,17 @@ public class MainActivity extends AppCompatActivity{
 
 
 
-        EditText editText = (EditText) findViewById(R.id.editText);
+        EditText editText = (EditText) findViewById(R.id.username_text);
         String message = editText.getText().toString();
 
             startActivity(intent);
 
 
+    }
+
+    public void register(View view){
+        Intent intent = new Intent (this, Registration.class);
+        startActivity (intent);
     }
 
 }
