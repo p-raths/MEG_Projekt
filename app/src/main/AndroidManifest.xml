@@ -24,8 +24,28 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ItemOverview"
-            android:label="@string/title_activity_item_overview"
+            android:name=".Item_Overview"
+            android:label="@string/title_activity_item__overview"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".Settings"
+            android:label="@string/title_activity_settings"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".Registration"
+            android:label="@string/title_activity_registration"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".Loaned_Items"
+            android:label="@string/title_activity_loaned__items"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".Item_Detail"
+            android:label="@string/title_activity_item__detail"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
     </application>
