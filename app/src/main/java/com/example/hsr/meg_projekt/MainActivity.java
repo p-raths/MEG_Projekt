@@ -51,10 +51,9 @@ public class MainActivity extends AppCompatActivity{
         editor.putString("server", server);
         editor.commit();
 
-        LibraryService service = new LibraryService();
-        service.setServerAddress(server);
+        LibraryService.setServerAddress(server);
 
-        service.login(username, password, new Callback<Boolean>() {
+        LibraryService.login(username, password, new Callback<Boolean>() {
             @Override
             public void onCompletion(Boolean input) {
                 if (input){
@@ -71,15 +70,16 @@ public class MainActivity extends AppCompatActivity{
         });
 
 
-        Intent intent = new Intent(this, Item_Overview.class);
-        startActivity(intent);
+       // Intent intent = new Intent(this, Item_Overview.class);
+       // startActivity(intent);
 
 
     }
 
     public void loginSuccessfull(View view){
-        //Intent intent = new Intent(this, Item_Overview.class);
-        //startActivity(intent);
+        Intent intent = new Intent(this, Item_Overview.class);
+        startActivity(intent);
+        Log.d("Login", "Works");
     }
     public void register(View view){
         Intent intent = new Intent (this, Registration.class);

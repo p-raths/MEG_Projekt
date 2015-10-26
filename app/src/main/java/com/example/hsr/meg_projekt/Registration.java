@@ -30,14 +30,6 @@ public class Registration extends AppCompatActivity {
 
     public void register(View view){
 
-        LibraryService service = new LibraryService();
-
-
-
-
-
-        //service.register();
-
 
 
 

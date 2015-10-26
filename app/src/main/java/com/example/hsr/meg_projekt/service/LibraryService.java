@@ -1,8 +1,5 @@
 package com.example.hsr.meg_projekt.service;
 
-/**
- * Created by praths on 19.10.15.
- */
 import android.util.Log;
 
 import com.google.gson.Gson;
