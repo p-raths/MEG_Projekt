@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity{
 
 
 
-        EditText editText = (EditText) findViewById(R.id.username);
+        EditText editText = (EditText) findViewById(R.id.editText);
         String message = editText.getText().toString();
 
             startActivity(intent);
