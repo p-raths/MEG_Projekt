@@ -56,29 +56,26 @@ public class MainActivity extends AppCompatActivity{
         LibraryService.login(username, password, new Callback<Boolean>() {
             @Override
             public void onCompletion(Boolean input) {
-                if (input){
+
                     loginSuccessfull(findViewById(android.R.id.content));
-                } else {
-                    Log.d("login funktionirt nicht","leel");
-                }
 
             }
             @Override
             public void onError(String message) {
-
+                    Log.d("Login", "Failed");
             }
         });
 
 
-       // Intent intent = new Intent(this, Item_Overview.class);
-       // startActivity(intent);
+        Intent intent = new Intent(this, Item_Overview.class);
+        startActivity(intent);
 
 
     }
 
     public void loginSuccessfull(View view){
-        Intent intent = new Intent(this, Item_Overview.class);
-        startActivity(intent);
+        //Intent intent = new Intent(this, Item_Overview.class);
+        //startActivity(intent);
         Log.d("Login", "Works");
     }
     public void register(View view){
