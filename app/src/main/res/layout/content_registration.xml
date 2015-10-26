@@ -33,7 +33,7 @@
     android:layout_height="wrap_content"
     android:textAppearance="?android:attr/textAppearanceLarge"
     android:text="Username"
-    android:id="@+id/textView3"
+    android:id="@+id/username"
     android:layout_marginTop="31dp"
     android:layout_below="@+id/subtitle"
     android:layout_alignParentStart="true" />
@@ -45,7 +45,7 @@
     android:text="Password"
     android:id="@+id/password"
     android:layout_marginTop="25dp"
-    android:layout_below="@+id/textView3"
+    android:layout_below="@+id/username"
     android:layout_alignParentStart="true" />
 
 <TextView
@@ -74,7 +74,7 @@
     android:id="@+id/username_text"
     android:layout_above="@+id/password"
     android:layout_alignParentEnd="true"
-    android:layout_toEndOf="@+id/textView3" />
+    android:layout_toEndOf="@+id/username" />
 
 <EditText
     android:layout_width="wrap_content"
@@ -84,7 +84,7 @@
     android:id="@+id/text_password"
     android:layout_alignBottom="@+id/password"
     android:layout_alignEnd="@+id/username_text"
-    android:layout_toEndOf="@+id/textView3" />
+    android:layout_toEndOf="@+id/username" />
 
 <EditText
     android:layout_width="wrap_content"
@@ -94,7 +94,7 @@
     android:id="@+id/text_name"
     android:layout_alignBottom="@+id/name"
     android:layout_alignEnd="@+id/text_password"
-    android:layout_toEndOf="@+id/textView3" />
+    android:layout_toEndOf="@+id/username" />
 
 <EditText
     android:layout_width="wrap_content"
@@ -104,7 +104,7 @@
     android:id="@+id/text_nr"
     android:layout_alignBottom="@+id/nummer"
     android:layout_alignEnd="@+id/text_password"
-    android:layout_toEndOf="@+id/textView3" />
+    android:layout_toEndOf="@+id/username" />
 
 
 

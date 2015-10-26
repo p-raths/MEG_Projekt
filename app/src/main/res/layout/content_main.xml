@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Username"
-            android:id="@+id/textView3"
+            android:id="@+id/username"
             android:layout_marginTop="31dp"
             android:layout_below="@+id/subtitle"
             android:layout_alignParentStart="true" />
@@ -44,7 +44,17 @@
             android:text="Password"
             android:id="@+id/password"
             android:layout_marginTop="25dp"
-            android:layout_below="@+id/textView3"
+            android:layout_below="@+id/username"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Server"
+            android:id="@+id/server"
+            android:layout_marginTop="25dp"
+            android:layout_below="@+id/password"
             android:layout_alignParentStart="true" />
 
         <EditText
@@ -53,24 +63,33 @@
             android:id="@+id/username_text"
             android:layout_above="@+id/password"
             android:layout_alignParentEnd="true"
-            android:layout_toEndOf="@+id/textView3" />
+            android:layout_toEndOf="@+id/username" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:ems="10"
-            android:id="@+id/editText2"
+            android:id="@+id/password_text"
             android:layout_alignBottom="@+id/password"
             android:layout_alignEnd="@+id/username_text"
-            android:layout_toEndOf="@+id/textView3" />
+            android:layout_toEndOf="@+id/username" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:id="@+id/text_Server"
+            android:layout_alignBottom="@+id/server"
+            android:layout_alignEnd="@+id/username_text"
+            android:layout_toEndOf="@+id/password" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Login"
             android:id="@+id/button"
-            android:layout_below="@+id/password"
+            android:layout_below="@+id/server"
             android:layout_alignParentStart="true"
             android:layout_marginTop="27dp"
             android:onClick="login"/>
@@ -80,8 +99,8 @@
             android:layout_height="wrap_content"
             android:text="Register"
             android:id="@+id/button2"
-            android:layout_alignBottom="@+id/button"
-            android:layout_alignStart="@+id/editText2"
-            android:onClick="register"/>
+            android:onClick="register"
+            android:layout_alignTop="@+id/button"
+            android:layout_alignStart="@+id/password_text" />
 
     </RelativeLayout>
