@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity{
         DrawerLayout fullView = (DrawerLayout) getLayoutInflater().inflate(R.layout.activity_main, null);
         mDrawerLayout = fullView;
         super.setContentView(fullView);
-        
+
         mNavigationView = (NavigationView) findViewById(R.id.navigation_View);
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
