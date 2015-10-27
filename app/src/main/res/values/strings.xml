@@ -38,4 +38,11 @@
         <item>mge7.dev.ifs.hsr.ch</item>
         <item>mge8.dev.ifs.hsr.ch</item>
     </string-array>
+
+    <string name="drawer_header_text">logged out</string>
+    <string name="drawer_overview">Item Overview</string>
+    <string name="drawer_myloans">My Loans</string>
+    <string name="drawer_submenu_title">Settings</string>
+    <string name="drawer_submenu_click">Configure</string>
+
 </resources>
