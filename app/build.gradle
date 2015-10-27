@@ -26,4 +26,6 @@ dependencies {
     compile 'com.android.support:design:23.0.1'
     compile 'com.google.code.gson:gson:2.2.4'
     compile 'com.ning:async-http-client:1.9.31'
+    compile 'com.android.support:recyclerview-v7:+'
 }
+

@@ -33,7 +33,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Username"
             android:id="@+id/username"
-            android:layout_marginTop="31dp"
+            android:layout_marginTop="10dp"
             android:layout_below="@+id/subtitle"
             android:layout_alignParentStart="true" />
 
@@ -43,7 +43,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Password"
             android:id="@+id/password"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="10dp"
             android:layout_below="@+id/username"
             android:layout_alignParentStart="true" />
 
@@ -53,7 +53,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Server"
             android:id="@+id/server"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="10dp"
             android:layout_below="@+id/password"
             android:layout_alignParentStart="true" />
 
@@ -63,7 +63,8 @@
             android:id="@+id/username_text"
             android:layout_above="@+id/password"
             android:layout_alignParentEnd="true"
-            android:layout_toEndOf="@+id/username" />
+            android:layout_toEndOf="@+id/username"
+            android:text="m@hsr.ch" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -73,7 +74,8 @@
             android:id="@+id/password_text"
             android:layout_alignBottom="@+id/password"
             android:layout_alignEnd="@+id/username_text"
-            android:layout_toEndOf="@+id/username" />
+            android:layout_toEndOf="@+id/username"
+            android:text="12345" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -91,7 +93,7 @@
             android:id="@+id/button"
             android:layout_below="@+id/server"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="27dp"
+            android:layout_marginTop="10dp"
             android:onClick="login"/>
 
         <Button
