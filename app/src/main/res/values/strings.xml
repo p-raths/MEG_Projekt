@@ -27,4 +27,11 @@
     <string name="title_activity_registration">Registration</string>
     <string name="title_activity_loaned__items">Loaned_Items</string>
     <string name="title_activity_item__detail">Item_Detail</string>
+
+    <string name="drawer_header_text">logged out</string>
+    <string name="drawer_overview">Item Overview</string>
+    <string name="drawer_myloans">My Loans</string>
+    <string name="drawer_submenu_title">Settings</string>
+    <string name="drawer_submenu_click">Configure</string>
+
 </resources>
