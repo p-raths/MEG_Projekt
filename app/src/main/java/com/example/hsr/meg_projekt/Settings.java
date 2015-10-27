@@ -29,8 +29,16 @@ public class Settings extends AppCompatActivity {
 
         String server = prefs.getString("server", "");
 
-        TextView textView = (TextView) findViewById(R.id.text_Server);
-        textView.setText(server);
+        if (server.length()> 1){
+            TextView textView = (TextView) findViewById(R.id.text_Server);
+            textView.setText(server);
+        }
+
+
+
+
+
+
 
         AutoCompleteTextView textView2 =(AutoCompleteTextView) findViewById(R.id.text_Server);
 
@@ -55,8 +63,16 @@ public class Settings extends AppCompatActivity {
 
     public void submit(View view){
 
+
         EditText serverEdit = (EditText) findViewById(R.id.text_Server);
-        String server = "http://" + serverEdit.getText().toString();
+        String server = serverEdit.getText().toString();
+
+        SharedPreferences.Editor editor = getSharedPreferences("server", MODE_PRIVATE).edit();
+        editor.putString("server", server);
+        editor.commit();
+
+        LibraryService.setServerAddress(server);
+
 
         LibraryService.setServerAddress(server);
         Snackbar.make(view, "Server changed", Snackbar.LENGTH_LONG).show();

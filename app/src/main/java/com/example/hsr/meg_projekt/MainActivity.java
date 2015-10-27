@@ -31,15 +31,13 @@ public class MainActivity extends AppCompatActivity{
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+
         SharedPreferences prefs = this.getSharedPreferences(
                 "server", Context.MODE_PRIVATE);
 
         String server = prefs.getString("server", "");
 
-        if (server.length()> 1){
-            TextView textView = (TextView) findViewById(R.id.text_Server);
-            textView.setText(server);
-        }
 
         DrawerLayout fullView = (DrawerLayout) getLayoutInflater().inflate(R.layout.activity_main, null);
         mDrawerLayout = fullView;
@@ -95,9 +93,6 @@ public class MainActivity extends AppCompatActivity{
                 "server", Context.MODE_PRIVATE);
 
         String server = prefs.getString("server", "");
-
-
-        LibraryService.setServerAddress(server);
 
         Log.d("Email", username);
         Log.d("passord", password);
