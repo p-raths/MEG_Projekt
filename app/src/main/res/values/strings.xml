@@ -28,6 +28,17 @@
     <string name="title_activity_loaned__items">Loaned_Items</string>
     <string name="title_activity_item__detail">Item_Detail</string>
 
+    <string-array name="server_array">
+        <item>mge1.dev.ifs.hsr.ch</item>
+        <item>mge2.dev.ifs.hsr.ch</item>
+        <item>mge3.dev.ifs.hsr.ch</item>
+        <item>mge4.dev.ifs.hsr.ch Samoa</item>
+        <item>mge5.dev.ifs.hsr.ch</item>
+        <item>mge6.dev.ifs.hsr.ch</item>
+        <item>mge7.dev.ifs.hsr.ch</item>
+        <item>mge8.dev.ifs.hsr.ch</item>
+    </string-array>
+
     <string name="drawer_header_text">logged out</string>
     <string name="drawer_overview">Item Overview</string>
     <string name="drawer_myloans">My Loans</string>

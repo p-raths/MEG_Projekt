@@ -84,9 +84,6 @@ public class MainActivity extends AppCompatActivity{
 
     public void login(View view){
 
-        EditText serverEdit = (EditText) findViewById(R.id.text_Server);
-        String server = serverEdit.getText().toString();
-
         EditText usernameEdit = (EditText) findViewById(R.id.username_text);
         String username = usernameEdit.getText().toString();
 
@@ -94,9 +91,11 @@ public class MainActivity extends AppCompatActivity{
         String password = passwordEdit.getText().toString();
 
 
-        SharedPreferences.Editor editor = getSharedPreferences("server", MODE_PRIVATE).edit();
-        editor.putString("server", server);
-        editor.commit();
+        SharedPreferences prefs = this.getSharedPreferences(
+                "server", Context.MODE_PRIVATE);
+
+        String server = prefs.getString("server", "");
+
 
         LibraryService.setServerAddress(server);
 

@@ -8,6 +8,8 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.example.hsr.meg_projekt.service.LibraryService;
@@ -30,6 +32,15 @@ public class Settings extends AppCompatActivity {
         TextView textView = (TextView) findViewById(R.id.text_Server);
         textView.setText(server);
 
+        AutoCompleteTextView textView2 =(AutoCompleteTextView) findViewById(R.id.text_Server);
+
+        String[] servers = getResources().getStringArray(R.array.server_array);
+
+        ArrayAdapter<String> adapter =
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, servers);
+        textView2.setAdapter(adapter);
+
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -45,7 +56,7 @@ public class Settings extends AppCompatActivity {
     public void submit(View view){
 
         EditText serverEdit = (EditText) findViewById(R.id.text_Server);
-        String server = serverEdit.getText().toString();
+        String server = "http://" + serverEdit.getText().toString();
 
         LibraryService.setServerAddress(server);
         Snackbar.make(view, "Server changed", Snackbar.LENGTH_LONG).show();
