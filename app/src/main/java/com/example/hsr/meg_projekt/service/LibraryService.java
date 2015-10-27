@@ -33,7 +33,7 @@ public class LibraryService {
         HashMap<String, String> parameter = new HashMap<>();
         parameter.put("email", mail);
         parameter.put("password", password);
-        Request<LoginToken> request = new Request<>(HttpVerb.POST, serverUrl + "/login", LoginToken.class, parameter, new Callback<LoginToken>() {
+        Request<LoginToken> request = new Request<>(HttpVerb.POST, serverUrl + "/public/login", LoginToken.class, parameter, new Callback<LoginToken>() {
             @Override
             public void onCompletion(LoginToken input) {
                 token = input;
@@ -52,7 +52,7 @@ public class LibraryService {
         HashMap<String, String> parameter = new HashMap<>();
         parameter.put("token", getTokenAsString());
 
-        Request<Boolean> request = new Request<>(HttpVerb.POST, serverUrl + "/logout", Boolean.class, parameter, new Callback<Boolean>() {
+        Request<Boolean> request = new Request<>(HttpVerb.POST, serverUrl + "/public/logout", Boolean.class, parameter, new Callback<Boolean>() {
             @Override
             public void onCompletion(Boolean input) {
                 if (input) {
@@ -77,7 +77,7 @@ public class LibraryService {
         parameter.put("name", name);
         parameter.put("studentnumber", studentenNumber);
 
-        Request<Boolean> request = new Request<>(HttpVerb.POST, serverUrl + "/register", Boolean.class, parameter, new Callback<Boolean>() {
+        Request<Boolean> request = new Request<>(HttpVerb.POST, serverUrl + "/public/register", Boolean.class, parameter, new Callback<Boolean>() {
             @Override
             public void onCompletion(Boolean input) {
                 callback.onCompletion(input);
@@ -99,7 +99,7 @@ public class LibraryService {
         HashMap<String, String> parameter = new HashMap<>();
 
         parameter.put("token", getTokenAsString());
-        Request<List<Loan>> request = new Request<>(HttpVerb.GET, serverUrl + "/loans", new TypeToken<List<Loan>>() {
+        Request<List<Loan>> request = new Request<>(HttpVerb.GET, serverUrl + "/public/loans", new TypeToken<List<Loan>>() {
         }.getType(), parameter, new Callback<List<Loan>>() {
             @Override
             public void onCompletion(List<Loan> input) {
@@ -121,7 +121,7 @@ public class LibraryService {
         HashMap<String, String> parameter = new HashMap<>();
         parameter.put("token", getTokenAsString());
 
-        Request<List<Reservation>> request = new Request<>(HttpVerb.GET, serverUrl + "/reservations", new TypeToken<List<Reservation>>() {
+        Request<List<Reservation>> request = new Request<>(HttpVerb.GET, serverUrl + "/public/reservations", new TypeToken<List<Reservation>>() {
         }.getType(), parameter, new Callback<List<Reservation>>() {
             @Override
             public void onCompletion(List<Reservation> input) {

@@ -47,26 +47,39 @@ public class Registration extends AppCompatActivity {
         String number = numberEdit.getText().toString();
 
 
-
-
-
         LibraryService.register(username, password, name, number, new Callback<Boolean>() {
             @Override
             public void onCompletion(Boolean input) {
-                Log.d("Registration", "Completed");
+                if(input){
+                    Log.d("Registration", "Completed");
+                    sucessfull(findViewById(android.R.id.content));
+                }else{
+                    Log.d("Registration", "Failed");
+                    registrationFailed(findViewById(android.R.id.content));
+                }
             }
 
             @Override
             public void onError(String message) {
-                Log.d("Registration","Failed");
+                Log.d("Registration", "Failed");
             }
 
         });
 
-
-
-        //Intent intent = new Intent (this, MainActivity.class);
-        //startActivity (intent);
     }
 
+
+    public void registrationFailed(View view){
+        Snackbar.make(view, "Registration Failed", Snackbar.LENGTH_LONG).show();
+    }
+
+    public void sucessfull(View view){
+
+        Snackbar.make(view, "Registration successful", Snackbar.LENGTH_LONG).show();
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+
+        Log.d("Login", "Works");
+    }
 }
