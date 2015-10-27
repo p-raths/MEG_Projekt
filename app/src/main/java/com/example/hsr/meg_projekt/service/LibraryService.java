@@ -145,7 +145,7 @@ public class LibraryService {
         parameter.put("token", getTokenAsString());
         parameter.put("gadgetId", toReserve.getInventoryNumber());
 
-        Request<Boolean> request = new Request<>(HttpVerb.POST, serverUrl + "/reservations", new TypeToken<Boolean>() {
+        Request<Boolean> request = new Request<>(HttpVerb.POST, serverUrl + "/public/reservations", new TypeToken<Boolean>() {
         }.getType(), parameter, new Callback<Boolean>() {
             @Override
             public void onCompletion(Boolean success) {
@@ -168,7 +168,7 @@ public class LibraryService {
         HashMap<String, String> parameter = new HashMap<>();
         parameter.put("token", getTokenAsString());
         parameter.put("id", toDelete.getReservationId());
-        Request<Boolean> request = new Request<>(HttpVerb.DELETE, serverUrl + "/reservations", Boolean.class, parameter, new Callback<Boolean>() {
+        Request<Boolean> request = new Request<>(HttpVerb.DELETE, serverUrl + "/public/reservations", Boolean.class, parameter, new Callback<Boolean>() {
             @Override
             public void onCompletion(Boolean input) {
                 callback.onCompletion(input);
