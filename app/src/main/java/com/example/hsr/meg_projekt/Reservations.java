@@ -62,7 +62,8 @@ public class Reservations extends OverlayActivity {
                     emptyReservationsImage.setVisibility(View.VISIBLE);
                 }
 
-
+                activityName = getResources().getString(R.string.title_activity_reservation);
+                setHeadertext();
             }
 
             @Override
