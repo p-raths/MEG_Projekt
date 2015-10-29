@@ -22,6 +22,8 @@ public class MainActivity extends OverlayActivity{
 
         SharedPreferences prefs = this.getSharedPreferences(
                 "server", Context.MODE_PRIVATE);
+
+        activityName = getResources().getString(R.string.title_activity_main);
     }
 
     public void login(View view){

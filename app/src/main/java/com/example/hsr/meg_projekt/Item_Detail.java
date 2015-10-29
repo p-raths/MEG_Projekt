@@ -24,6 +24,8 @@ public class Item_Detail extends OverlayActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        activityName = getResources().getString(R.string.title_activity_item__detail);
     }
 
 }

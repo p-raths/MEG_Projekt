@@ -28,6 +28,8 @@ public class Item_Overview extends OverlayActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        activityName = getResources().getString(R.string.title_activity_item_overview);
     }
 
     public void onBackPressed(){

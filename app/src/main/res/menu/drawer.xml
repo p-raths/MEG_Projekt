@@ -13,8 +13,12 @@
     <item android:title="@string/drawer_submenu_title">
         <menu android:id="@+id/menu_config">
             <item
-                android:id="@+id/drawer_submenu_click"
-                android:title="@string/drawer_submenu_click"
+                android:id="@+id/drawer_submenu_conf"
+                android:title="@string/drawer_submenu_conf"
+                />
+            <item
+                android:id="@+id/drawer_submenu_loginout"
+                android:title="@string/drawer_submenu_loginout"
                 />
         </menu>
     </item>

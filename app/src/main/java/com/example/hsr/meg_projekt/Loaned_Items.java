@@ -63,6 +63,7 @@ public class Loaned_Items extends OverlayActivity {
             }
         });
 
+        activityName = getResources().getString(R.string.title_activity_loaned__items);
     }
 
 

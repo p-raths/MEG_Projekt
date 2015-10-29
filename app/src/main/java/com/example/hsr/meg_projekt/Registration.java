@@ -30,6 +30,8 @@ public class Registration extends OverlayActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        activityName = getResources().getString(R.string.title_activity_registration);
     }
 
     public void register(View view){

@@ -1,12 +1,8 @@
 package com.example.hsr.meg_projekt;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
@@ -14,20 +10,17 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 
-import com.example.hsr.meg_projekt.service.Callback;
 import com.example.hsr.meg_projekt.service.LibraryService;
 
 public class OverlayActivity extends AppCompatActivity{
     static NavigationView mNavigationView;
     private DrawerLayout mDrawerLayout;
+    protected String activityName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,16 +88,15 @@ public class OverlayActivity extends AppCompatActivity{
                 menuItem.setChecked(true);
                 mDrawerLayout.closeDrawers();
                 switch (menuItem.getItemId()) {
-                    case R.id.drawer_submenu_click:
-                        if (getResources().getString(R.string.drawer_submenu_click).equals("Configure")) {
+                    case R.id.drawer_submenu_conf:
+                        if (!activityName.equals(getResources().getString(R.string.title_activity_settings)))
                             startActivity(new Intent(OverlayActivity.this, Settings.class));
-                        } else {
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            intent.putExtra("EXIT", true);
-                            startActivity(intent);
-                        }
-
+                        break;
+                    case R.id.drawer_submenu_loginout:
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.putExtra("EXIT", true);
+                        startActivity(intent);
                         break;
                     case R.id.drawer_myloans:
                         if (LibraryService.isLoggedIn())
