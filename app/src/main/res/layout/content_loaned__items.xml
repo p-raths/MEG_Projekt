@@ -10,4 +10,13 @@
     tools:showIn="@layout/activity_loaned__items"
     tools:context="com.example.hsr.meg_projekt.Loaned_Items">
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvLoans"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        />
+
+
+
 </RelativeLayout>
