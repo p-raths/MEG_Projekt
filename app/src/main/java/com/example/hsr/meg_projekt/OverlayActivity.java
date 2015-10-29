@@ -75,8 +75,8 @@ public class OverlayActivity extends AppCompatActivity{
 
             @Override
             public void onDrawerStateChanged(int newState) {
-                InputMethodManager inputMethodManager = (InputMethodManager) OverlayActivity.this.getSystemService(Activity.INPUT_METHOD_SERVICE);
-                inputMethodManager.hideSoftInputFromWindow(OverlayActivity.this.getCurrentFocus().getWindowToken(), 0);
+               // InputMethodManager inputMethodManager = (InputMethodManager) OverlayActivity.this.getSystemService(Activity.INPUT_METHOD_SERVICE);
+               // inputMethodManager.hideSoftInputFromWindow(OverlayActivity.this.getCurrentFocus().getWindowToken(), 0);
             }
         });
 
