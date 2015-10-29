@@ -14,10 +14,12 @@
         <menu android:id="@+id/menu_config">
             <item
                 android:id="@+id/drawer_submenu_conf"
+                android:icon="@drawable/ic_settings_black_24dp"
                 android:title="@string/drawer_submenu_conf"
                 />
             <item
                 android:id="@+id/drawer_submenu_loginout"
+                android:icon="@drawable/ic_input_black_24dp"
                 android:title="@string/drawer_submenu_login"
                 />
         </menu>

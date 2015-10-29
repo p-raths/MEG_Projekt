@@ -1,14 +1,17 @@
 package com.example.hsr.meg_projekt;
 
+import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.hsr.meg_projekt.service.Callback;
 import com.example.hsr.meg_projekt.service.LibraryService;
@@ -33,7 +36,7 @@ public class MainActivity extends OverlayActivity{
     public void login(View view){
 
         EditText usernameEdit = (EditText) findViewById(R.id.username_text);
-        String username = usernameEdit.getText().toString();
+        final String username = usernameEdit.getText().toString();
 
         EditText passwordEdit = (EditText) findViewById(R.id.password_text);
         String password = passwordEdit.getText().toString();
@@ -61,6 +64,12 @@ public class MainActivity extends OverlayActivity{
 
                 if (input) {
                     loginSuccessfull(findViewById(android.R.id.content));
+
+                    TextView headertext = (TextView) findViewById(R.id.drawer_header_login_name);
+                    headertext.setText("logged in as: " + username);
+
+                    //Menu setting = (Menu) findViewById(R.id.menu_config);
+                    //setting.getItem(1).setTitle(getResources().getString(R.string.drawer_submenu_login));
                 } else {
                     loginFailed(findViewById(android.R.id.content));
                     Log.d("Server Response", "Login Failsed");

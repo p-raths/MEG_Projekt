@@ -30,9 +30,9 @@ public class Loaned_Items extends OverlayActivity {
                 public void onCompletion(List<Loan> input) {
                     RecyclerView rvLoans = (RecyclerView) findViewById(R.id.rvLoans);
                     rvLoans.setHasFixedSize(true);
-                    //LoansAdapter adapter = new LoansAdapter(input, getApplicationContext());
-                    //rvLoans.setAdapter(adapter);
-                    //rvLoans.setLayoutManager(new LinearLayoutManager(Loaned_Items.this));
+                    LoansAdapter adapter = new LoansAdapter(input, getApplicationContext());
+                    rvLoans.setAdapter(adapter);
+                    rvLoans.setLayoutManager(new LinearLayoutManager(Loaned_Items.this));
                 }
 
                 @Override

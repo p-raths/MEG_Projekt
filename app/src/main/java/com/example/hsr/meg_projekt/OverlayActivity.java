@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -94,18 +95,16 @@ public class OverlayActivity extends AppCompatActivity{
                             startActivity(new Intent(OverlayActivity.this, Settings.class));
                         break;
                     case R.id.drawer_submenu_loginout:
-                        if (!activityName.equals(getResources().getString(R.string.title_activity_login))) {
+                        if (!activityName.equals(getResources().getString(R.string.title_activity_main))) {
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             intent.putExtra("EXIT", true);
                             startActivity(intent);
 
-                            TextView loginout = (TextView) findViewById(R.id.drawer_submenu_loginout);
-
-                            if (loginout.getText().equals(getResources().getString(R.string.drawer_submenu_login))) {
-                                loginout.setText(getResources().getString(R.string.drawer_submenu_logout));
-                            } else {
-                                loginout.setText(getResources().getString(R.string.drawer_submenu_login));
+                            if (menuItem.getTitle().equals(getResources().getString(R.string.drawer_submenu_logout))) {
+                                menuItem.setTitle(getResources().getString(R.string.drawer_submenu_login));
+                                TextView headertext = (TextView) findViewById(R.id.drawer_header_login_name);
+                                headertext.setText("logged out");
                             }
                         }
                         break;
