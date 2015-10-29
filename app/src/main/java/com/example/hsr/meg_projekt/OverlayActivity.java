@@ -171,7 +171,7 @@ public class OverlayActivity extends AppCompatActivity{
         String str = "logged in as: " + user;
         headertext.setText(str);
 
-        Menu setting = (Menu) findViewById(R.id.drawer_menu);
-        setting.getItem(1).setTitle(getResources().getString(R.string.drawer_submenu_login));
+//        Menu setting = (Menu) findViewById(R.id.drawer_menu);
+//        setting.getItem(1).setTitle(getResources().getString(R.string.drawer_submenu_login));
     }
 }
