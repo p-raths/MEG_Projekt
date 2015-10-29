@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hsr.meg_projekt.domain.Gadget;
@@ -31,7 +32,7 @@ public class Item_Overview extends OverlayActivity {
 
         super.onCreate(savedInstanceState);
 
-        activityName = getResources().getString(R.string.title_activity_item_overview);
+
 
         try {
             LibraryService.getGadgets(new Callback<List<Gadget>>() {
@@ -53,6 +54,8 @@ public class Item_Overview extends OverlayActivity {
                     mAdapter = new MyAdapter(input);
                     mRecyclerView.setAdapter(mAdapter);
 
+                    activityName = getResources().getString(R.string.title_activity_item_overview);
+                    setHeadertext();
                 }
 
                 @Override
@@ -66,10 +69,6 @@ public class Item_Overview extends OverlayActivity {
         } catch (Exception e) {
             Log.d("Exception", "getLoansForCustomer");
         }
-
-
-
-
     }
 
     public void onBackPressed(){

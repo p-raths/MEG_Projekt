@@ -17,7 +17,7 @@ public class Loaned_Items extends OverlayActivity {
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_loan_user);
+        setContentView(R.layout.activity_loaned_items);
         try {
             LibraryService.getLoansForCustomer(new Callback<List<Loan>>() {
                 @Override
@@ -38,6 +38,7 @@ public class Loaned_Items extends OverlayActivity {
         }
 
         activityName = getResources().getString(R.string.title_activity_loaned_items);
+        setHeadertext();
     }
 
 

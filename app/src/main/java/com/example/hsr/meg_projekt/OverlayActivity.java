@@ -17,12 +17,15 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.example.hsr.meg_projekt.service.Callback;
 import com.example.hsr.meg_projekt.service.LibraryService;
 
 public class OverlayActivity extends AppCompatActivity{
     static NavigationView mNavigationView;
     private DrawerLayout mDrawerLayout;
     protected String activityName = "";
+
+    static String user = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,10 +104,23 @@ public class OverlayActivity extends AppCompatActivity{
                             intent.putExtra("EXIT", true);
                             startActivity(intent);
 
-                            if (menuItem.getTitle().equals(getResources().getString(R.string.drawer_submenu_logout))) {
-                                menuItem.setTitle(getResources().getString(R.string.drawer_submenu_login));
-                                TextView headertext = (TextView) findViewById(R.id.drawer_header_login_name);
-                                headertext.setText("logged out");
+                            if (LibraryService.isLoggedIn()) {
+
+                                LibraryService.logout(new Callback<Boolean>() {
+                                    @Override
+                                    public void onCompletion(Boolean input) {
+                                        if (input) {
+                                            logoutSuccessfull(findViewById(android.R.id.content));
+                                        } else {
+                                            logoutFailed(findViewById(android.R.id.content));
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onError(String message) {
+                                        logoutFailed(findViewById(android.R.id.content));
+                                    }
+                                });
                             }
                         }
                         break;
@@ -137,5 +153,25 @@ public class OverlayActivity extends AppCompatActivity{
             actionBar.setHomeButtonEnabled(true);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+    }
+
+    public void logoutSuccessfull(View view){
+        Snackbar.make(view, "Logout Successfull", Snackbar.LENGTH_LONG).show();
+        this.finish();
+
+    }
+
+    public void logoutFailed(View view){
+        Snackbar.make(view, "Logout Successfull", Snackbar.LENGTH_LONG).show();
+
+    }
+
+    public void setHeadertext(){
+        TextView headertext = (TextView) findViewById(R.id.drawer_header_login_name);
+        String str = "logged in as: " + user;
+        headertext.setText(str);
+
+        Menu setting = (Menu) findViewById(R.id.drawer_menu);
+        setting.getItem(1).setTitle(getResources().getString(R.string.drawer_submenu_login));
     }
 }
