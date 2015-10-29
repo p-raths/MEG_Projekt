@@ -1,4 +1,4 @@
-package com.example.hsr.meg_projekt.helper;
+package com.example.hsr.meg_projekt.helpers;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -12,18 +12,18 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
-import java.util.List;
-
 import com.example.hsr.meg_projekt.R;
 import com.example.hsr.meg_projekt.domain.Gadget;
 import com.example.hsr.meg_projekt.service.Callback;
 import com.example.hsr.meg_projekt.service.LibraryService;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
+import java.util.List;
 
-public class RVAdapterGadgets extends RecyclerView.Adapter<RVAdapterGadgets.GadgetViewHolder>{
+
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.GadgetViewHolder>{
     List<Gadget> gadgets;
 
     public static class GadgetViewHolder extends RecyclerView.ViewHolder {
@@ -53,22 +53,11 @@ public class RVAdapterGadgets extends RecyclerView.Adapter<RVAdapterGadgets.Gadg
             fabAddReservation = (FloatingActionButton)itemView.findViewById(R.id.fab_add_reservation);
             defaultColor = gadgetDetailTitle.getCurrentTextColor();
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override public void onClick(View v) {
-                    if(gadgetDetailContainer.getVisibility() == View.GONE){
                         gadgetDetailTitle.setBackgroundColor(context.getResources().getColor(R.color.colorPrimaryDark));
                         gadgetDetailTitle.setTextColor(Color.WHITE);
                         gadgetDetailContainer.setVisibility(View.VISIBLE);
                         fabAddReservation.setVisibility(View.VISIBLE);
-                    } else {
-                        gadgetDetailTitle.setBackgroundColor(Color.WHITE);
-                        gadgetDetailTitle.setTextColor(defaultColor);
-                        gadgetDetailContainer.setVisibility(View.GONE);
-                        fabAddReservation.setVisibility(View.GONE);
 
-                    }
-                }
-            });
             fabAddReservation.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(final View v) {
@@ -88,7 +77,7 @@ public class RVAdapterGadgets extends RecyclerView.Adapter<RVAdapterGadgets.Gadg
         }
     }
 
-    public RVAdapterGadgets(List<Gadget> gadgets){
+    public MyAdapter(List<Gadget> gadgets){
         this.gadgets = gadgets;
     }
 

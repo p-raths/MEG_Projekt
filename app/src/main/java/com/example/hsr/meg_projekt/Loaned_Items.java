@@ -21,18 +21,12 @@ public class Loaned_Items extends OverlayActivity {
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_loaned__items);
-
-        setContentView(R.layout.gadget);
+        setContentView(R.layout.activity_loan_user);
         try {
             LibraryService.getLoansForCustomer(new Callback<List<Loan>>() {
                 @Override
                 public void onCompletion(List<Loan> input) {
-                    RecyclerView rvLoans = (RecyclerView) findViewById(R.id.rvLoans);
-                    rvLoans.setHasFixedSize(true);
-                    LoansAdapter adapter = new LoansAdapter(input, getApplicationContext());
-                    rvLoans.setAdapter(adapter);
-                    rvLoans.setLayoutManager(new LinearLayoutManager(Loaned_Items.this));
+
                 }
 
                 @Override

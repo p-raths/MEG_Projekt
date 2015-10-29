@@ -29,9 +29,6 @@
             android:textSize="30sp"
             />
 
-
-
-
         <TextView
             android:id="@+id/pickupDate"
             android:layout_width="wrap_content"
