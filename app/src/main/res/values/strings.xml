@@ -46,7 +46,7 @@
     <string name="drawer_myreservations">My Reservations</string>
     <string name="drawer_submenu_title">Settings</string>
     <string name="drawer_submenu_conf">Configure</string>
-    <string name="drawer_submenu_login">Login</string>
+    <string name="drawer_submenu_login">Login/Out</string>
     <string name="drawer_submenu_logout">Logout</string>
 
 
