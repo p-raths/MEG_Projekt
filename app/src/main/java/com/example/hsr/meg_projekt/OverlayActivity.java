@@ -93,21 +93,27 @@ public class OverlayActivity extends AppCompatActivity{
                             startActivity(new Intent(OverlayActivity.this, Settings.class));
                         break;
                     case R.id.drawer_submenu_loginout:
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        intent.putExtra("EXIT", true);
-                        startActivity(intent);
+                        if (!activityName.equals(getResources().getString(R.string.title_activity_login))) {
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            intent.putExtra("EXIT", true);
+                            startActivity(intent);
+                        }
                         break;
                     case R.id.drawer_myloans:
-                        if (LibraryService.isLoggedIn())
-                            startActivity(new Intent(OverlayActivity.this, Loaned_Items.class));
-                        else
+                        if (LibraryService.isLoggedIn()) {
+                            if (!activityName.equals(getResources().getString(R.string.title_activity_loaned_items))) {
+                                startActivity(new Intent(OverlayActivity.this, Loaned_Items.class));
+                            }
+                        } else
                             Snackbar.make(findViewById(android.R.id.content), "You must be logged in for this shit pleb!", Snackbar.LENGTH_LONG).show();
                         break;
                     case R.id.drawer_overview:
-                        if (LibraryService.isLoggedIn())
-                            startActivity(new Intent(OverlayActivity.this, Item_Overview.class));
-                        else
+                        if (LibraryService.isLoggedIn()) {
+                            if (!activityName.equals(getResources().getString(R.string.title_activity_item_overview))) {
+                                startActivity(new Intent(OverlayActivity.this, Item_Overview.class));
+                            }
+                        } else
                             Snackbar.make(findViewById(android.R.id.content), "You must be logged in for this shit pleb!", Snackbar.LENGTH_LONG).show();
                         break;
                 }

@@ -26,7 +26,7 @@
         </activity>
         <activity
             android:name=".Item_Overview"
-            android:label="@string/title_activity_item__overview"
+            android:label="@string/title_activity_item_overview"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
@@ -41,12 +41,12 @@
         </activity>
         <activity
             android:name=".Loaned_Items"
-            android:label="@string/title_activity_loaned__items"
+            android:label="@string/title_activity_loaned_items"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
             android:name=".Item_Detail"
-            android:label="@string/title_activity_item__detail"
+            android:label="@string/title_activity_item_detail"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
