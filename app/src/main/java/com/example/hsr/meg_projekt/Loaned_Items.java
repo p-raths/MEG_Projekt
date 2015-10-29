@@ -54,32 +54,7 @@ public class Loaned_Items extends OverlayActivity {
             Log.d("Exception", "getLoansForCustomer");
         }
 
-        try {
-            LibraryService.getReservationsForCustomer(new Callback<List<Reservation>>() {
-                @Override
 
-                public void onCompletion(List<Reservation> input) {
-                    mRecyclerView = (RecyclerView) findViewById(R.id.reservation_rv);
-                    mRecyclerView.setHasFixedSize(true);
-                    mLayoutManager = new LinearLayoutManager(getApplicationContext());
-                    mRecyclerView.setLayoutManager(mLayoutManager);
-                    mAdapter = new ReservationAdappter(input, getApplicationContext());
-                    mRecyclerView.setAdapter(mAdapter);
-                    activityName = getResources().getString(R.string.title_activity_loaned_items);
-                    setHeadertext();
-                }
-
-                @Override
-                public void onError(String message) {
-
-                }
-            });
-        } catch (IllegalStateException e) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        } catch (Exception e) {
-            Log.d("Exception", "getLoansForCustomer");
-        }
 
 
     }
