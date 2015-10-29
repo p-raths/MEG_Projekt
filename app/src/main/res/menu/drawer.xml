@@ -18,7 +18,7 @@
                 />
             <item
                 android:id="@+id/drawer_submenu_loginout"
-                android:title="@string/drawer_submenu_loginout"
+                android:title="@string/drawer_submenu_login"
                 />
         </menu>
     </item>

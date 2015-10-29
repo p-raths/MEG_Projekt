@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import com.example.hsr.meg_projekt.service.LibraryService;
 
@@ -98,6 +99,14 @@ public class OverlayActivity extends AppCompatActivity{
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             intent.putExtra("EXIT", true);
                             startActivity(intent);
+
+                            TextView loginout = (TextView) findViewById(R.id.drawer_submenu_loginout);
+
+                            if (loginout.getText().equals(getResources().getString(R.string.drawer_submenu_login))) {
+                                loginout.setText(getResources().getString(R.string.drawer_submenu_logout));
+                            } else {
+                                loginout.setText(getResources().getString(R.string.drawer_submenu_login));
+                            }
                         }
                         break;
                     case R.id.drawer_myloans:
