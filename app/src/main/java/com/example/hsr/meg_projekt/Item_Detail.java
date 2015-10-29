@@ -14,6 +14,7 @@ public class Item_Detail extends OverlayActivity {
         setContentView(R.layout.activity_item__detail);
 
         activityName = getResources().getString(R.string.title_activity_item_detail);
+        setHeadertext();
     }
 
 }

@@ -63,13 +63,8 @@ public class MainActivity extends OverlayActivity{
             public void onCompletion(Boolean input) {
 
                 if (input) {
+                    user = username;
                     loginSuccessfull(findViewById(android.R.id.content));
-
-                    TextView headertext = (TextView) findViewById(R.id.drawer_header_login_name);
-                    headertext.setText("logged in as: " + username);
-
-                    //Menu setting = (Menu) findViewById(R.id.menu_config);
-                    //setting.getItem(1).setTitle(getResources().getString(R.string.drawer_submenu_login));
                 } else {
                     loginFailed(findViewById(android.R.id.content));
                     Log.d("Server Response", "Login Failsed");

@@ -30,6 +30,7 @@ public class Loaned_Items extends OverlayActivity {
 
         activityName = getResources().getString(R.string.title_activity_loaned_items);
 
+        setContentView(R.layout.activity_loaned_items);
         try {
             LibraryService.getReservationsForCustomer(new Callback<List<Loan>>() {
                 @Override
@@ -62,9 +63,14 @@ public class Loaned_Items extends OverlayActivity {
             Log.d("Exception", "getLoansForCustomer");
         }
 
+<<<<<<< HEAD
 
 
 
+=======
+        activityName = getResources().getString(R.string.title_activity_loaned_items);
+        setHeadertext();
+>>>>>>> origin/master
     }
 
 
