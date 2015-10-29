@@ -37,7 +37,7 @@ public class MainActivity extends OverlayActivity{
                 "server", Context.MODE_PRIVATE);
 
         Log.d("Email", username);
-        Log.d("passord", password);
+        Log.d("password", password);
 
         try {
             InputMethodManager inputManager = (InputMethodManager)
@@ -57,6 +57,7 @@ public class MainActivity extends OverlayActivity{
                     loginSuccessfull(findViewById(android.R.id.content));
                 } else {
                     loginFailed(findViewById(android.R.id.content));
+                    Log.d("Server Response", "Login Failsed");
                 }
             }
 
