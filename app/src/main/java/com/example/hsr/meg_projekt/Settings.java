@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import com.example.hsr.meg_projekt.service.LibraryService;
 
-public class Settings extends AppCompatActivity {
+public class Settings extends OverlayActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

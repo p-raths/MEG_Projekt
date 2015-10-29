@@ -10,7 +10,7 @@ import android.view.View;
 import com.example.hsr.meg_projekt.service.Callback;
 import com.example.hsr.meg_projekt.service.LibraryService;
 
-public class Item_Overview extends AppCompatActivity {
+public class Item_Overview extends OverlayActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

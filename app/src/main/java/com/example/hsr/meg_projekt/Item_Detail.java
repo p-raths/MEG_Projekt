@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-public class Item_Detail extends AppCompatActivity {
+public class Item_Detail extends OverlayActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

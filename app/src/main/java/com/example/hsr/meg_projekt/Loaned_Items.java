@@ -19,7 +19,7 @@ import com.example.hsr.meg_projekt.service.LibraryService;
 
 import java.util.List;
 
-public class Loaned_Items extends AppCompatActivity {
+public class Loaned_Items extends OverlayActivity {
 
 
     public void onCreate(Bundle savedInstanceState) {

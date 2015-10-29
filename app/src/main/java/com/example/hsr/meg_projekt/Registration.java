@@ -13,7 +13,7 @@ import android.widget.EditText;
 import com.example.hsr.meg_projekt.service.Callback;
 import com.example.hsr.meg_projekt.service.LibraryService;
 
-public class Registration extends AppCompatActivity {
+public class Registration extends OverlayActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
