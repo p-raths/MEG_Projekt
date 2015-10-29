@@ -1,6 +1,7 @@
 package com.example.hsr.meg_projekt;
 
 import android.app.Activity;
+import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -11,6 +12,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -124,6 +126,14 @@ public class OverlayActivity extends AppCompatActivity{
                             }
                         }
                         break;
+                    case R.id.drawer_myreservations:
+                        if (LibraryService.isLoggedIn()) {
+                            if (!activityName.equals(getResources().getString(R.string.title_activity_reservation))) {
+                                startActivity(new Intent(OverlayActivity.this, Reservations.class));
+                            }
+                        } else
+                            Snackbar.make(findViewById(android.R.id.content), "You must be logged in for this shit pleb!", Snackbar.LENGTH_LONG).show();
+                        break;
                     case R.id.drawer_myloans:
                         if (LibraryService.isLoggedIn()) {
                             if (!activityName.equals(getResources().getString(R.string.title_activity_loaned_items))) {
@@ -171,7 +181,7 @@ public class OverlayActivity extends AppCompatActivity{
         String str = "logged in as: " + user;
         headertext.setText(str);
 
-        Menu setting = (Menu) findViewById(R.id.drawer_menu);
-        setting.getItem(1).setTitle(getResources().getString(R.string.drawer_submenu_login));
+        //MenuItem pleb = (MenuItem) findViewById(R.id.drawer_submenu_loginout);
+        //pleb.setTitle(getResources().getString(R.string.drawer_submenu_logout));
     }
 }
