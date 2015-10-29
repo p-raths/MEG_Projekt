@@ -20,8 +20,12 @@ public class MainActivity extends OverlayActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         SharedPreferences prefs = this.getSharedPreferences(
                 "server", Context.MODE_PRIVATE);
+
+        String server = prefs.getString("server", "");
+        LibraryService.setServerAddress(server);
 
         activityName = getResources().getString(R.string.title_activity_main);
     }
