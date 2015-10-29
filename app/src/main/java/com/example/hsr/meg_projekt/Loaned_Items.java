@@ -53,9 +53,7 @@ public class Loaned_Items extends OverlayActivity {
             Log.d("Exception", "getLoansForCustomer");
         }
 
-
-
-        activityName = getResources().getString(R.string.title_activity_loaned__items);
+        activityName = getResources().getString(R.string.title_activity_loaned_items);
     }
 
 
