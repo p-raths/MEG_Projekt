@@ -5,12 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -18,14 +17,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.FrameLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.hsr.meg_projekt.service.Callback;
 import com.example.hsr.meg_projekt.service.LibraryService;
 
-public class MainActivity extends AppCompatActivity{
+public class OverlayActivity extends AppCompatActivity{
     static NavigationView mNavigationView;
     private DrawerLayout mDrawerLayout;
 
@@ -90,8 +86,8 @@ public class MainActivity extends AppCompatActivity{
 
             @Override
             public void onDrawerStateChanged(int newState) {
-                InputMethodManager inputMethodManager = (InputMethodManager) MainActivity.this.getSystemService(Activity.INPUT_METHOD_SERVICE);
-                inputMethodManager.hideSoftInputFromWindow(MainActivity.this.getCurrentFocus().getWindowToken(), 0);
+                InputMethodManager inputMethodManager = (InputMethodManager) OverlayActivity.this.getSystemService(Activity.INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(OverlayActivity.this.getCurrentFocus().getWindowToken(), 0);
             }
         });
 
@@ -104,7 +100,7 @@ public class MainActivity extends AppCompatActivity{
                 switch (menuItem.getItemId()) {
                     case R.id.drawer_submenu_click:
                         if (getResources().getString(R.string.drawer_submenu_click).equals("Configure")) {
-                            startActivity(new Intent(MainActivity.this, Settings.class));
+                            startActivity(new Intent(OverlayActivity.this, Settings.class));
                         } else {
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -115,13 +111,13 @@ public class MainActivity extends AppCompatActivity{
                         break;
                     case R.id.drawer_myloans:
                         if (LibraryService.isLoggedIn())
-                            startActivity(new Intent(MainActivity.this, Loaned_Items.class));
+                            startActivity(new Intent(OverlayActivity.this, Loaned_Items.class));
                         else
                             Snackbar.make(findViewById(android.R.id.content), "You must be logged in for this shit pleb!", Snackbar.LENGTH_LONG).show();
                         break;
                     case R.id.drawer_overview:
                         if (LibraryService.isLoggedIn())
-                            startActivity(new Intent(MainActivity.this, Item_Overview.class));
+                            startActivity(new Intent(OverlayActivity.this, Item_Overview.class));
                         else
                             Snackbar.make(findViewById(android.R.id.content), "You must be logged in for this shit pleb!", Snackbar.LENGTH_LONG).show();
                         break;
@@ -130,68 +126,4 @@ public class MainActivity extends AppCompatActivity{
             }
         });
     }
-
-    public void login(View view){
-
-        EditText usernameEdit = (EditText) findViewById(R.id.username_text);
-        String username = usernameEdit.getText().toString();
-
-        EditText passwordEdit = (EditText) findViewById(R.id.password_text);
-        String password = passwordEdit.getText().toString();
-
-
-        SharedPreferences prefs = this.getSharedPreferences(
-                "server", Context.MODE_PRIVATE);
-
-        String server = prefs.getString("server", "");
-
-        Log.d("Email", username);
-        Log.d("passord", password);
-
-        try {
-            InputMethodManager inputManager = (InputMethodManager)
-                    getSystemService(Context.INPUT_METHOD_SERVICE);
-
-            inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
-                    InputMethodManager.HIDE_NOT_ALWAYS);
-        } catch (Exception e) {
-            Log.d("Hide Keyboard","oke...");
-        }
-
-        LibraryService.login(username, password, new Callback<Boolean>() {
-            @Override
-            public void onCompletion(Boolean input) {
-
-                if (input) {
-                    loginSuccessfull(findViewById(android.R.id.content));
-                } else {
-                    loginFailed(findViewById(android.R.id.content));
-                }
-            }
-
-            @Override
-            public void onError(String message) {
-                Log.d("Login", message);
-                loginFailed(findViewById(android.R.id.content));
-            }
-        });
-
-
-    }
-
-    public void loginFailed(View view){
-        Snackbar.make(view, "Login Failed", Snackbar.LENGTH_LONG).show();
-    }
-
-    public void loginSuccessfull(View view){
-        Intent intent = new Intent(this, Item_Overview.class);
-
-        startActivity(intent);
-        Log.d("Login", "Works");
-    }
-    public void register(View view){
-        Intent intent = new Intent (this, Registration.class);
-        startActivity (intent);
-    }
-
 }

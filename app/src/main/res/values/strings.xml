@@ -44,5 +44,6 @@
     <string name="drawer_myloans">My Loans</string>
     <string name="drawer_submenu_title">Settings</string>
     <string name="drawer_submenu_click">Configure</string>
+    <string name="title_activity_overlay">OverlayActivity</string>
 
 </resources>
