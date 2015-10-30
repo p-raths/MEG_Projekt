@@ -49,11 +49,21 @@ public class MainActivity extends OverlayActivity{
         }
 
 
-        SharedPreferences prefs = this.getSharedPreferences(
+        SharedPreferences server_prefs = this.getSharedPreferences(
                 "server", Context.MODE_PRIVATE);
+        String server_pref = server_prefs.getString("server", "");
+       if (server_pref.length()< 1){
 
-        String server = prefs.getString("server", "");
-        LibraryService.setServerAddress(server);
+            SharedPreferences.Editor editor = getSharedPreferences("server", MODE_PRIVATE).edit();
+            editor.putString("server", "http://mge1.dev.ifs.hsr.ch");
+            editor.commit();
+            LibraryService.setServerAddress("http://mge1.dev.ifs.hsr.ch");
+
+       }else
+       {
+           LibraryService.setServerAddress(server_pref);
+       }
+
 
         activityName = getResources().getString(R.string.title_activity_main);
     }
