@@ -12,26 +12,8 @@
             xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            tools:context="ch.mge.miniprojekt.gadgeothek.activities.ReservationActivity">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/empty_reservations"
-                android:visibility="gone"
-                android:text="No Reservations!"
-                android:textSize="40sp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"/>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/empty_reservations_image"
-                android:visibility="gone"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/empty_reservations"
-                android:contentDescription="No Reservations Image"
-                android:background="@drawable/ic_emoticon_sad_grey600_48dp"
-                />
+            tools:context="com.example.hsr.meg_projekt.Reservations">
+
             <android.support.v7.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

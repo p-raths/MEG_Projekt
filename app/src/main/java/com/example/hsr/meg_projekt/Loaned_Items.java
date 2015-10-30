@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.example.hsr.meg_projekt.domain.Loan;
 import com.example.hsr.meg_projekt.domain.Reservation;
@@ -26,6 +28,12 @@ public class Loaned_Items extends OverlayActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loaned_items);
+
+        Window window = this.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.setStatusBarColor(this.getResources().getColor(R.color.colorPrimaryDark));
+
 
         try {
             LibraryService.getLoansForCustomer(new Callback<List<Loan>>() {

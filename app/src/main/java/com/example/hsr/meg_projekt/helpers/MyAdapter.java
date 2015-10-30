@@ -44,12 +44,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.GadgetViewHolder>{
             super(itemView);
             context = itemView.getContext();
             cv = (CardView)itemView.findViewById(R.id.gadget_item);
-            gadgetDetailContainer = (LinearLayout)itemView.findViewById(R.id.gadget_detail_container);
+            gadgetDetailContainer = (LinearLayout)itemView.findViewById(R.id.gadget_container);
             gadgetDetailTitle = (TextView)itemView.findViewById(R.id.gadget_detail_title);
-            gadgetDetailId = (TextView)itemView.findViewById(R.id.gadget_detail_id);
-            gadgetDetailManufacturer = (TextView)itemView.findViewById(R.id.gadget_detail_manufacturer);
-            gadgetDetailCondition = (TextView)itemView.findViewById(R.id.gadget_detail_condition);
-            gadgetDetailPrice = (TextView)itemView.findViewById(R.id.gadget_detail_price);
+            gadgetDetailId = (TextView)itemView.findViewById(R.id.gadget_id);
+            gadgetDetailManufacturer = (TextView)itemView.findViewById(R.id.producer);
+            gadgetDetailCondition = (TextView)itemView.findViewById(R.id.field_state);
+            gadgetDetailPrice = (TextView)itemView.findViewById(R.id.field_price);
             fabAddReservation = (FloatingActionButton)itemView.findViewById(R.id.fab_add_reservation);
             defaultColor = gadgetDetailTitle.getCurrentTextColor();
 

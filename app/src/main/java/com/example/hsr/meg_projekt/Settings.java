@@ -8,6 +8,8 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
@@ -21,6 +23,10 @@ public class Settings extends OverlayActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        Window window = this.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.setStatusBarColor(this.getResources().getColor(R.color.colorPrimaryDark));
 
         SharedPreferences prefs = this.getSharedPreferences(
                 "server", Context.MODE_PRIVATE);
@@ -31,12 +37,6 @@ public class Settings extends OverlayActivity {
             TextView textView = (TextView) findViewById(R.id.text_Server);
             textView.setText(server);
         }
-
-
-
-
-
-
 
         AutoCompleteTextView textView2 =(AutoCompleteTextView) findViewById(R.id.text_Server);
 

@@ -34,7 +34,7 @@ public class LoanedAdappter extends RecyclerView.Adapter<LoanedAdappter.ViewHold
             cv = (CardView) itemView.findViewById(R.id.cv);
             nameTextView = (TextView) itemView.findViewById(R.id.item_name);
             pickupDateTextView = (TextView) itemView.findViewById(R.id.pickupDate);
-            itemImage = (ImageView) itemView.findViewById(R.id.item_photo);
+            itemImage = (ImageView) itemView.findViewById(R.id.apple_Logo);
         }
     }
 

@@ -10,6 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +34,10 @@ public class Item_Overview extends OverlayActivity {
 
         super.onCreate(savedInstanceState);
 
+        Window window = this.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.setStatusBarColor(this.getResources().getColor(R.color.colorPrimaryDark));
 
 
         try {
@@ -41,19 +47,11 @@ public class Item_Overview extends OverlayActivity {
 
                     setContentView(R.layout.activity_item__overview);
                     mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
-
-                    // use this setting to improve performance if you know that changes
-                    // in content do not change the layout size of the RecyclerView
                     mRecyclerView.setHasFixedSize(true);
-
-                    // use a linear layout manager
                     mLayoutManager = new LinearLayoutManager(getApplicationContext());
                     mRecyclerView.setLayoutManager(mLayoutManager);
-
-                    // specify an adapter (see also next example)
                     mAdapter = new MyAdapter(input);
                     mRecyclerView.setAdapter(mAdapter);
-
                     activityName = getResources().getString(R.string.title_activity_item_overview);
                     setHeadertext();
                 }

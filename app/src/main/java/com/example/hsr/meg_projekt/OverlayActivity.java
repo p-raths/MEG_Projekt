@@ -2,6 +2,7 @@ package com.example.hsr.meg_projekt;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -13,6 +14,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -52,6 +55,7 @@ public class OverlayActivity extends AppCompatActivity{
         return super.onOptionsItemSelected(item);
     }
 
+
     @Override
     public void setContentView(int layoutResID)
     {
@@ -79,8 +83,7 @@ public class OverlayActivity extends AppCompatActivity{
 
             @Override
             public void onDrawerStateChanged(int newState) {
-               // InputMethodManager inputMethodManager = (InputMethodManager) OverlayActivity.this.getSystemService(Activity.INPUT_METHOD_SERVICE);
-               // inputMethodManager.hideSoftInputFromWindow(OverlayActivity.this.getCurrentFocus().getWindowToken(), 0);
+
             }
         });
 
@@ -130,7 +133,7 @@ public class OverlayActivity extends AppCompatActivity{
                                 startActivity(new Intent(OverlayActivity.this, Reservations.class));
                             }
                         } else
-                            Snackbar.make(findViewById(android.R.id.content), "You must be logged in for this shit pleb!", Snackbar.LENGTH_LONG).show();
+                            missingLogin(findViewById(android.R.id.content));
                         break;
                     case R.id.drawer_myloans:
                         if (LibraryService.isLoggedIn()) {
@@ -138,7 +141,7 @@ public class OverlayActivity extends AppCompatActivity{
                                 startActivity(new Intent(OverlayActivity.this, Loaned_Items.class));
                             }
                         } else
-                            Snackbar.make(findViewById(android.R.id.content), "You must be logged in for this shit pleb!", Snackbar.LENGTH_LONG).show();
+                            missingLogin(findViewById(android.R.id.content));
                         break;
                     case R.id.drawer_overview:
                         if (LibraryService.isLoggedIn()) {
@@ -146,7 +149,7 @@ public class OverlayActivity extends AppCompatActivity{
                                 startActivity(new Intent(OverlayActivity.this, Item_Overview.class));
                             }
                         } else
-                            Snackbar.make(findViewById(android.R.id.content), "You must be logged in for this shit pleb!", Snackbar.LENGTH_LONG).show();
+                            missingLogin(findViewById(android.R.id.content));
                         break;
                 }
                 return true;
@@ -174,12 +177,15 @@ public class OverlayActivity extends AppCompatActivity{
 
     }
 
+    public void missingLogin(View view){
+        Snackbar.make(view, "You must be logged in for this!", Snackbar.LENGTH_LONG).show();
+
+    }
+
     public void setHeadertext(){
         TextView headertext = (TextView) findViewById(R.id.drawer_header_login_name);
         String str = "logged in as: " + user;
         headertext.setText(str);
 
-        //MenuItem pleb = (MenuItem) findViewById(R.id.drawer_submenu_loginout);
-        //pleb.setTitle(getResources().getString(R.string.drawer_submenu_logout));
     }
 }

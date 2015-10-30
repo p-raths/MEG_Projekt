@@ -1,17 +1,14 @@
 package com.example.hsr.meg_projekt;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
-import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,13 +21,11 @@ import java.util.List;
 
 public class Reservations extends OverlayActivity {
 
-    RecyclerView rv;
-    TextView emptyReservations;
-    ImageView emptyReservationsImage;
+    RecyclerView recyclerView;
+    ItemTouchHelper.SimpleCallback ItemCallback;
+    SwipeRefreshLayout SwipeLayout;
     ReservationAdappter adapter;
-    FloatingActionButton fab;
-    ItemTouchHelper.SimpleCallback simpleItemTouchCallback;
-    SwipeRefreshLayout swipeRefreshLayout;
+
 
 
     @Override
@@ -38,14 +33,19 @@ public class Reservations extends OverlayActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activity_reservations);
 
-        rv = (RecyclerView) findViewById(R.id.reservation_container);
-        rv.setHasFixedSize(true);
+        Window window = this.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.setStatusBarColor(this.getResources().getColor(R.color.colorPrimaryDark));
 
-        emptyReservations = (TextView)findViewById(R.id.empty_reservations);
-        emptyReservationsImage = (ImageView)findViewById(R.id.empty_reservations_image);
+
+
+        recyclerView = (RecyclerView) findViewById(R.id.reservation_container);
+        recyclerView.setHasFixedSize(true);
+
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
-        rv.setLayoutManager(llm);
+        recyclerView.setLayoutManager(llm);
 
 
         LibraryService.getReservationsForCustomer(new Callback<List<Reservation>>() {
@@ -53,13 +53,8 @@ public class Reservations extends OverlayActivity {
             public void onCompletion(List<Reservation> reservations) {
 
                 if(reservations.size() != 0) {
-                    emptyReservations.setVisibility(View.GONE);
-                    emptyReservationsImage.setVisibility(View.GONE);
                     adapter = new ReservationAdappter(reservations, getApplicationContext());
-                    rv.setAdapter(adapter);
-                } else {
-                    emptyReservations.setVisibility(View.VISIBLE);
-                    emptyReservationsImage.setVisibility(View.VISIBLE);
+                    recyclerView.setAdapter(adapter);
                 }
 
                 activityName = getResources().getString(R.string.title_activity_reservation);
@@ -68,10 +63,10 @@ public class Reservations extends OverlayActivity {
 
             @Override
             public void onError(String message) {
-                Snackbar.make(rv, "Error getting Reservations", Snackbar.LENGTH_LONG).show();
+                Snackbar.make(recyclerView, "Error getting Reservations", Snackbar.LENGTH_LONG).show();
             }
         });
-        simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+        ItemCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
 
             @Override
             public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
@@ -80,41 +75,37 @@ public class Reservations extends OverlayActivity {
 
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
-                adapter.onItemDismiss(viewHolder.getAdapterPosition(), rv);
+                adapter.onItemDismiss(viewHolder.getAdapterPosition(), recyclerView);
 
             }
 
         };
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
-        itemTouchHelper.attachToRecyclerView(rv);
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(ItemCallback);
+        itemTouchHelper.attachToRecyclerView(recyclerView);
 
-        swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swipeRefreshLayout);
-        swipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.accent));
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        SwipeLayout = (SwipeRefreshLayout)findViewById(R.id.swipeRefreshLayout);
+        SwipeLayout.setColorSchemeColors(getResources().getColor(R.color.colorAccent));
+        SwipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 LibraryService.getReservationsForCustomer(new Callback<List<Reservation>>() {
                     @Override
                     public void onCompletion(List<Reservation> reservations) {
 
-                        if(reservations.size() != 0) {
-                            emptyReservations.setVisibility(View.GONE);
-                            emptyReservationsImage.setVisibility(View.GONE);
+                        if (reservations.size() != 0) {
+
                             adapter = new ReservationAdappter(reservations, getApplicationContext());
-                            rv.setAdapter(adapter);
-                            rv.getAdapter().notifyDataSetChanged();
-                        } else {
-                            emptyReservations.setVisibility(View.VISIBLE);
-                            emptyReservationsImage.setVisibility(View.VISIBLE);
+                            recyclerView.setAdapter(adapter);
+                            recyclerView.getAdapter().notifyDataSetChanged();
                         }
-                        swipeRefreshLayout.setRefreshing(false);
+                        SwipeLayout.setRefreshing(false);
 
                     }
 
                     @Override
                     public void onError(String message) {
-                        Snackbar.make(rv, "Error getting Reservations", Snackbar.LENGTH_LONG).show();
-                        swipeRefreshLayout.setRefreshing(false);
+                        Snackbar.make(recyclerView, "Error getting Reservations", Snackbar.LENGTH_LONG).show();
+                        SwipeLayout.setRefreshing(false);
                     }
                 });
             }
@@ -129,19 +120,14 @@ public class Reservations extends OverlayActivity {
             public void onCompletion(List<Reservation> reservations) {
 
                 if (reservations.size() != 0) {
-                    emptyReservations.setVisibility(View.GONE);
-                    emptyReservationsImage.setVisibility(View.GONE);
                     adapter = new ReservationAdappter(reservations, getApplicationContext());
-                    rv.setAdapter(adapter);
-                } else {
-                    emptyReservations.setVisibility(View.VISIBLE);
-                    emptyReservationsImage.setVisibility(View.VISIBLE);
+                    recyclerView.setAdapter(adapter);
                 }
             }
 
             @Override
             public void onError(String message) {
-                Snackbar.make(rv, "Error getting Reservations", Snackbar.LENGTH_LONG).show();
+                Snackbar.make(recyclerView, "Error getting Reservations", Snackbar.LENGTH_LONG).show();
             }
         });
     }

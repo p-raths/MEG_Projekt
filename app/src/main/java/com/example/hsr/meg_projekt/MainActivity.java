@@ -9,6 +9,8 @@ import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -22,6 +24,29 @@ public class MainActivity extends OverlayActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Window window = this.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.setStatusBarColor(this.getResources().getColor(R.color.colorPrimaryDark));
+
+        SharedPreferences username_prefs = this.getSharedPreferences(
+                "username", Context.MODE_PRIVATE);
+        String user_pref = username_prefs.getString("username", "");
+
+        SharedPreferences password_prefs = this.getSharedPreferences(
+                "password", Context.MODE_PRIVATE);
+        String pass_pref = password_prefs.getString("password", "");
+
+
+        if (user_pref.length()> 1){
+            TextView textView = (TextView) findViewById(R.id.username_text);
+            textView.setText(user_pref);
+        }
+        if (pass_pref.length()> 1){
+            TextView textView = (TextView) findViewById(R.id.password_text);
+            textView.setText(pass_pref);
+        }
 
 
         SharedPreferences prefs = this.getSharedPreferences(
@@ -39,11 +64,7 @@ public class MainActivity extends OverlayActivity{
         final String username = usernameEdit.getText().toString();
 
         EditText passwordEdit = (EditText) findViewById(R.id.password_text);
-        String password = passwordEdit.getText().toString();
-
-
-        SharedPreferences prefs = this.getSharedPreferences(
-                "server", Context.MODE_PRIVATE);
+        final String password = passwordEdit.getText().toString();
 
         Log.d("Email", username);
         Log.d("password", password);
@@ -63,7 +84,17 @@ public class MainActivity extends OverlayActivity{
             public void onCompletion(Boolean input) {
 
                 if (input) {
-                    user = username;
+                    user=username;
+
+                    SharedPreferences.Editor editor = getSharedPreferences("username", MODE_PRIVATE).edit();
+                    editor.putString("username", username);
+                    editor.commit();
+
+                    editor = getSharedPreferences("password", MODE_PRIVATE).edit();
+                    editor.putString("password", password);
+                    editor.commit();
+
+
                     loginSuccessfull(findViewById(android.R.id.content));
                 } else {
                     loginFailed(findViewById(android.R.id.content));

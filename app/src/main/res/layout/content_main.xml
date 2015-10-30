@@ -54,8 +54,7 @@
             android:id="@+id/username_text"
             android:layout_above="@+id/password"
             android:layout_alignParentEnd="true"
-            android:layout_toEndOf="@+id/username"
-            android:text="m@hsr.ch" />
+            android:layout_toEndOf="@+id/username" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -65,8 +64,7 @@
             android:id="@+id/password_text"
             android:layout_alignBottom="@+id/password"
             android:layout_alignEnd="@+id/username_text"
-            android:layout_toEndOf="@+id/username"
-            android:text="12345" />
+            android:layout_toEndOf="@+id/username" />
 
 
 
